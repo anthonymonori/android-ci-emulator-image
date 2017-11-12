@@ -2,7 +2,7 @@
 Container set up with build tools in order to run Android connected builds in a Docker setup.
 
 ## Contains
-- Ruby: 2.1.9
+- Ruby: 2.2.8
 - RubyGems: 2.6.6
 - Bundler: 1.12.5
 - Java8 JDK: _latest as-of 18.05.2017_
