@@ -58,10 +58,7 @@ RUN set -ex \
     && rm -r /usr/src/ruby \
     && apt-get autoremove -y \
     && apt-get clean
-
-# Install bundler
-RUN gem install bundler --version "$BUNDLER_VERSION"
-
+    
 # install things globally, for great justice and don't create ".bundle" in all our apps
 ENV GEM_HOME /usr/local/bundle
 ENV BUNDLE_PATH="$GEM_HOME" \
