@@ -1,5 +1,5 @@
-# android-fastlane-image
-Container set up with build tools in order to run Android builds in a Docker setup.
+# android-fastlane-emulator-image
+Container set up with build tools in order to run Android connected builds in a Docker setup.
 
 ## Contains
 - Ruby: 2.1.9
@@ -14,7 +14,7 @@ Container set up with build tools in order to run Android builds in a Docker set
 
 #### Including this in your ci.yml
 ```
-image: anthonymonori/android-fastlane-image:latest
+image: anthonymonori/android-fastlane-emulator-image:latest
 ```
 
 _Note: Currently supporting Travis CI and GitLab CI._
@@ -22,8 +22,8 @@ _Note: Currently supporting Travis CI and GitLab CI._
 #### Creating a docker container
 ```
 docker login
-docker pull anthonymonori/android-fastlane-image:latest
-docker run -it -d -p <port>:<port-internal> --name <container-name> anthonymonori/android-fastlane-image:latest
+docker pull anthonymonori/android-fastlane-emulator-image:latest
+docker run -it -d -p <port>:<port-internal> --name <container-name> anthonymonori/android-fastlane-emulator-image:latest
 ```
 
 _Note: of course, you need to change \<port>,\<port-internal>,\<container-name> to run the above command lines. You also might want to enable the <port> variable on whatever cloud solutions you are running._
@@ -58,7 +58,7 @@ docker build .
 
 ## Deploy image
 ```
-docker push anthonymonori/android-fastlane-image
+docker push anthonymonori/android-fastlane-emulator-image
 ```
 
 ## Problems
