@@ -22,14 +22,12 @@ COPY android-packages.txt /var/temp/android-packages.txt
 # Install SDK packages
 RUN sdkmanager --package_file="/var/temp/android-packages.txt" --channel=0 --verbose
 
-# Create emulators
-COPY create-devices.sh /opt/scripts/create-devices.sh
-RUN chmod 755 /opt/scripts/create-devices.sh
-RUN /opt/scripts/create-devices.sh
-
 # Cleaning
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # GO to workspace
 RUN mkdir -p /opt/workspace
 WORKDIR /opt/workspace
+
+# Create emulators
+ENTRYPOINT /opt/scripts/create-devices.sh
