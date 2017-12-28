@@ -24,9 +24,6 @@ COPY android-packages.txt /var/temp/android-packages.txt
 # RUN sdkmanager --package_file="/var/temp/android-packages.txt" --channel=0 --sdk_root="$ANDROID_HOME" --verbose
 RUN sdkmanager --channel=0 --sdk_root="$ANDROID_HOME" --verbose \
             "platforms;android-23" \
-            "platforms;android-27" \
-            "system-images;android-27;android-tv;x86" \
-            "system-images;android-27;google_apis_playstore;x86" \
             "system-images;android-23;google_apis;x86_64"
 
 # Cleaning
