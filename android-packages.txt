@@ -1,5 +1,2 @@
 platforms;android-23
-platforms;android-27
-system-images;android-27;android-tv;x86
-system-images;android-27;google_apis_playstore;x86
-system-images;android-23;google_apis;x86_64
+system-images;android-23;google_apis;x86

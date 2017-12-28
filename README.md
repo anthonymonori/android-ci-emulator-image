@@ -42,7 +42,6 @@ In your `.gitlab-ci.yml` file, add the following lines to ensure the virtual dev
 
 - `@Nexus6P`
 - `@Nexus10`
-- `@GenericAndroidTV1080p`
 
 _For the full list, please see [create-devices.sh](./scripts/create-devices.sh)_
 

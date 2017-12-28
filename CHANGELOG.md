@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.2
+
+- Removing API 27 and TV emulator to speed up image for now
+
 ## 1.0.1
 
 - Correctly placing create-device.sh script
