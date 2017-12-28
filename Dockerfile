@@ -8,8 +8,13 @@ EXPOSE 5037
 EXPOSE 5554
 EXPOSE 5555
 EXPOSE 5900
-EXPOSE 80
 EXPOSE 443
+EXPOSE 80
+
+# Install additional system dependencies
+COPY dependencies.txt /var/temp/dependencies.txt
+RUN dpkg --add-architecture i386 && apt-get update
+RUN apt-get install -y --allow-change-held-packages $(cat /var/temp/dependencies.txt)
 
 # Copy various scripts over
 COPY scripts /opt/scripts
@@ -24,7 +29,7 @@ COPY android-packages.txt /var/temp/android-packages.txt
 # RUN sdkmanager --package_file="/var/temp/android-packages.txt" --channel=0 --sdk_root="$ANDROID_HOME" --verbose
 RUN sdkmanager --channel=0 --sdk_root="$ANDROID_HOME" --verbose \
             "platforms;android-23" \
-            "system-images;android-23;google_apis;x86_64"
+            "system-images;android-23;google_apis;x86_64" 
 
 # Cleaning
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

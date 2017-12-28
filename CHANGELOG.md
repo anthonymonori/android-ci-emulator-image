@@ -3,6 +3,7 @@
 ## 1.0.2
 
 - Removing API 27 and TV emulator to speed up image for now
+- Ensuring that KVM is installed and enabled
 
 ## 1.0.1
 
