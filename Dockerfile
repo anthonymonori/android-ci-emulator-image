@@ -32,6 +32,3 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # GO to workspace
 RUN mkdir -p /opt/workspace
 WORKDIR /opt/workspace
-
-# Create emulators
-ENTRYPOINT /opt/scripts/create-devices.sh

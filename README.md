@@ -33,15 +33,17 @@ _Note: of course, you need to change `[port]`,`[port-internal]`,`[container-name
 In your `.gitlab-ci.yml` file, add the following lines to ensure the virtual devices are started up:
 
 ```Shell
-- emulator <@DEVICE_NAME> -wipe-data -verbose -logcat '*:e *:w' -netfast -no-boot-anim -no-audio -no-window &&
+before_script:
+- /opt/scripts/create-devices.sh
+- cd $ANDROID_HOME/tools && emulator -avd [AVD-NAME] -wipe-data -netfast -no-boot-anim -no-audio -no-snapshot -bootchart 120
 - /opt/scripts/android-wait-for-emulator.sh
 - adb shell input keyevent 82
 ```
 
 #### Possible device names:
 
-- `@Nexus6P`
-- `@Nexus10`
+- `Nexus6P`
+- `Nexus10`
 
 _For the full list, please see [create-devices.sh](./scripts/create-devices.sh)_
 
