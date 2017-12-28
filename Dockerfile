@@ -1,6 +1,6 @@
 FROM anthonymonori/android-fastlane-image:latest
 
-MAINTAINER Antal János Monori <anthonymonori@gmail.com>
+LABEL maintainer="anthonymonori@gmail.com"
 
 # Expose ADB, ADB control and VNC ports
 EXPOSE 22
@@ -15,12 +15,19 @@ EXPOSE 443
 COPY scripts /opt/scripts
 RUN chmod 755 /opt/scripts/android-accept-licenses.sh
 RUN chmod 755 /opt/scripts/android-wait-for-emulator.sh
+RUN chmod 755 /opt/scripts/create-devices.sh
 
 # Copy list of Android SDK packages to be installed
 COPY android-packages.txt /var/temp/android-packages.txt
 
 # Install SDK packages
-RUN sdkmanager --package_file="/var/temp/android-packages.txt" --channel=0 --verbose
+# RUN sdkmanager --package_file="/var/temp/android-packages.txt" --channel=0 --sdk_root="$ANDROID_HOME" --verbose
+RUN sdkmanager --channel=0 --sdk_root="$ANDROID_HOME" --verbose \
+            "platforms;android-23" \
+            "platforms;android-27" \
+            "system-images;android-27;android-tv;x86" \
+            "system-images;android-27;google_apis_playstore;x86" \
+            "system-images;android-23;google_apis;x86_64"
 
 # Cleaning
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
